@@ -6,7 +6,7 @@ RUN pacman -Sy --noconfirm --needed \
         git \
         mise \
         rustup \
-    && rm -rf /var/lib/pacman/s/* \
+    && rm -rf /var/lib/pacman/sync/* \
     && rm -rf /var/cache/pacman/pkg/*
 
 ENV RUSTUP_HOME=/root/.rustup \
@@ -14,7 +14,7 @@ ENV RUSTUP_HOME=/root/.rustup \
     PATH="/root/.cargo/bin:${PATH}"
 
 RUN rustup update stable --no-self-update && \
-    rustup target add x86_64-unknown-linux-musl && \
+    rustup target add x86_64-unknown-linux-musl aarch64-unknown-linux-gnu i686-unknown-linux-gnu && \
     rustup component add clippy rustfmt
 
 # Pre-fetch tools from the devbox repo's mise.toml into the system-wide
