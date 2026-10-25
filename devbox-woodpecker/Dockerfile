@@ -1,9 +1,13 @@
 # syntax=docker/dockerfile:1
 FROM archlinux:latest AS base
 
-RUN pacman -Sy --noconfirm --needed git mise rustup && \
-    rm -rf /var/lib/pacman/s/* && \
-    rm -rf /var/cache/pacman/pkg/*
+RUN pacman -Sy --noconfirm --needed \
+        gcc \
+        git \
+        mise \
+        rustup \
+    && rm -rf /var/lib/pacman/s/* \
+    && rm -rf /var/cache/pacman/pkg/*
 
 ENV RUSTUP_HOME=/root/.rustup \
     CARGO_HOME=/root/.cargo \
