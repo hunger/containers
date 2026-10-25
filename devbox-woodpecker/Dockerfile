@@ -5,6 +5,7 @@ RUN pacman -Sy --noconfirm --needed \
         gcc \
         git \
         mise \
+        python \
         rustup \
     && rm -rf /var/lib/pacman/s/* \
     && rm -rf /var/cache/pacman/pkg/*
